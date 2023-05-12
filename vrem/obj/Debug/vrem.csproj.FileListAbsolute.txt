@@ -1,0 +1,16 @@
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem.csproj.AssemblyReference.cache
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem.csproj.SuggestedBindingRedirects.cache
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\MainWindow.baml
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\MainWindow.g.cs
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\App.g.cs
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem_MarkupCompile.cache
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem.g.resources
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem.Properties.Resources.resources
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem.csproj.GenerateResource.cache
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\source\repos\vrem\vrem\bin\Debug\vrem.exe.config
+C:\Users\Пользователь\source\repos\vrem\vrem\bin\Debug\vrem.exe
+C:\Users\Пользователь\source\repos\vrem\vrem\bin\Debug\vrem.pdb
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem.exe
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem.pdb
+C:\Users\Пользователь\source\repos\vrem\vrem\obj\Debug\vrem_MarkupCompile.lref
