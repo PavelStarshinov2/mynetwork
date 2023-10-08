@@ -18,8 +18,29 @@ using System.Windows.Shapes;
 
 namespace mytelegramm
 {
+    public class VariableWrapper : INotifyPropertyChanged
+    {
+        private bool _delete;
+        public bool delete
+        {
+            get { return _delete; }
+            set
+            {
+                _delete = value;
+                OnPropertyChanged(nameof(delete));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
     public class ChatItem : INotifyPropertyChanged
     {
+        
         private BitmapImage _image;
         private string _chatName;
         private string _lastMessage;
@@ -64,8 +85,12 @@ namespace mytelegramm
     /// <summary>
     /// Логика взаимодействия для mychat.xaml
     /// </summary>
+
     public partial class mychat : Page
     {
+       
+
+        VariableWrapper variableWrapper = new VariableWrapper();
         //тут мы используем ObservableCollection так как при добавлении нового объекта класса он сразу обновляет ListView
         public ObservableCollection<ChatItem> chatItems { get; set; }
         public mychat()
@@ -89,25 +114,59 @@ namespace mytelegramm
             chatItems.Add(chatItem3);
             DataContext = this;
         }
-    
+
 
         private void DockPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             // Получаем ссылку на родительское окно (MainWindow)
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
 
             // Получаем ссылку на Frame
             Frame myFrame = (Frame)mainWindow.FindName("NavigationFrame");
             myFrame.Content = new chatselected();
+
+
+
+
+
+
+
         }
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            //// Находим первый объект ChatItem с заданным значением ChatName
+            //ChatItem chatItem = chatItems.FirstOrDefault(item => item.ChatName == "Chat 1");
+
+            //if (chatItem != null)
+            //{
+            //    // Изменяем название чата
+            //    chatItem.ChatName = "Новое название чата";
+            //}
+
+
+
             ChatItem chatItem1 = new ChatItem();
             chatItem1.Image = new BitmapImage(new Uri("image/избранное.jpg", UriKind.RelativeOrAbsolute));
             chatItem1.ChatName = "Chat 1";
             chatItem1.LastMessage = "Hello!";
-            chatItems.Add(chatItem1);  
+            chatItems.Add(chatItem1);
+        }
+        private void deletechat_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            variableWrapper.delete = !variableWrapper.delete;
+            if (variableWrapper.delete == true)
+            {
+                deletechat.Text = "Готово";
+                chekbox.IsChecked = true;
+            }
+            else
+            {
+                deletechat.Text = "Изм.";
+                chekbox.IsChecked = false;
+            }
+
         }
     }
 }

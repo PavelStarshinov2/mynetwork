@@ -6,8 +6,44 @@
       xmlns:local="clr-namespace:mytelegramm"
       mc:Ignorable="d" d:DesignWidth="820" d:Height="648"
       Title="chatselected">
+    <Page.Resources>
+        <Style TargetType="Border" x:Key="forchatborder">
+            <Setter Property="Background" Value="#4b5a7d"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Padding" Value="12 12 12 4"/>
+            <Setter Property="Margin" Value="0 8 20 8"/>
+            <Setter Property="CornerRadius" Value="30"/>
+        </Style>
 
-    
+        <Style TargetType="TextBlock" x:Key="forchat">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Background" Value="#4b5a7d"/>
+            <Setter Property="MaxWidth" Value="300"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="MinWidth" Value="37.6"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="26"/>
+        </Style>
+
+
+        <Style TargetType="ListViewItem" x:Key="formessage">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border Style="{StaticResource forchatborder}">
+                            <DockPanel>
+                                <TextBlock  Style="{StaticResource forchat}" 
+                                           Text="{Binding LastMessage}" DockPanel.Dock="Top"/>
+                                <TextBlock  FontSize="13" Text="{Binding Datesend}"
+                                 FontFamily="Arial" HorizontalAlignment="Right" Padding="0 0 3 0 "/>
+                            </DockPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <StackPanel Background="AliceBlue">
         <Grid Height="80"  DockPanel.Dock="Top" Background="#1c212e">
             <Grid.ColumnDefinitions>
@@ -22,14 +58,17 @@
                 </Border.Background>
             </Border>
             <StackPanel Grid.Column="1">
-                <TextBlock Text="имя" DockPanel.Dock="Top"  Height="40" Width="200" Style="{StaticResource text}"/>
+                <TextBlock Text=" название чат"  DockPanel.Dock="Top"  Height="40" Width="200" Style="{StaticResource text}"/>
                 <TextBlock Text="когда в сети" DockPanel.Dock="Bottom" Width="200" Style="{StaticResource text}"/>
             </StackPanel>
         </Grid>
-        <ScrollViewer  x:Name="scroll1" HorizontalAlignment="Center" Canvas.Top="27" VerticalAlignment="Top" Height="488" Width="806">
-            <StackPanel Background="#2c354a" x:Name="mylist1"/>
-        </ScrollViewer>
-
+        
+        <ListView  VirtualizingStackPanel.CacheLength="3"  VirtualizingStackPanel.CacheLengthUnit="Item" 
+                  VirtualizingStackPanel.IsVirtualizing="True" BorderThickness="0"
+                  Background="#2c354a" x:Name="mylist1"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.Top="27" 
+                    Height="488" Width="806"
+                   ItemContainerStyle="{StaticResource formessage}" ItemsSource="{Binding soob}">
+        </ListView>
         <Grid Background="#1c212e" DockPanel.Dock="Bottom"  Height="80">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70"/>
@@ -41,11 +80,13 @@
                     <RotateTransform Angle="45" />
                 </TextBlock.LayoutTransform>
             </TextBlock>
-            <TextBox Grid.Column="1"  HorizontalContentAlignment="Left" Padding="15 10 0 0 "  Style="{StaticResource zahrug}" Height="54"  Margin="0 0 20 0" KeyUp="soob1_KeyUp" x:Name="soob1">
+            <TextBox Grid.Column="1"  HorizontalContentAlignment="Left" Padding="15 10 0 0 "  Style="{StaticResource zahrug}" 
+             Height="54"  Margin="0 0 20 0" KeyUp="soob1_KeyUp" x:Name="soob1" TextWrapping="Wrap" > 
             </TextBox>
             <Button Grid.Column="2" x:Name="register"
                      Content="Send" Style="{StaticResource RoundButtonforchat}" 
-                     FontFamily="Arial" Click="sendsob" />
+                     FontFamily="Arial" Click="sendsob">
+            </Button>
         </Grid>
    
     </StackPanel>

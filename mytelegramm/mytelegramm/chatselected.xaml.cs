@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,36 +18,60 @@ using System.Windows.Shapes;
 
 namespace mytelegramm
 {
-    /// <summary>
-    /// Логика взаимодействия для chatselected.xaml
-    /// </summary>
+    public class SoobItem : INotifyPropertyChanged
+    {
+        private string _datesend;
+        private string _lastMessage;
+        public string LastMessage
+        {
+            get { return _lastMessage; }
+            set
+            {
+                _lastMessage = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        public string Datesend
+        {
+            get { return _datesend; }
+            set
+            {
+                _datesend = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
     public partial class chatselected : Page
     {
+        public ObservableCollection<SoobItem> soob { get; set; }
         public chatselected()
         {
             InitializeComponent();
+            soob = new ObservableCollection<SoobItem>();
+            DataContext = this;
         }
 
-        private void soob1_KeyUp(object sender, KeyEventArgs e) //ТУТ ВЕРНУТСЯ И СДЕЛАТЬ ВСЕ СТИЛЕМ ОДНИМ
+        private void soob1_KeyUp(object sender, KeyEventArgs e)
         {
             if (soob1.Text != "")
             {
                 if (e.Key == Key.Enter)
                 {
-                    TextBlock textBlock = new TextBlock();
-                    textBlock.Text = soob1.Text;
+                    SoobItem soobItem = new SoobItem();
+                    soobItem.LastMessage = soob1.Text;
+                    DateTime localTime = DateTime.Now;
+                    soobItem.Datesend = localTime.ToString("HH:mm");
                     soob1.Text = "";
-                    // Получение ресурса стиля из App.xaml
-                    Style myStyle = (Style)Application.Current.Resources["forchat"];
-                    // Получение ресурса стиля из App.xaml
-                    Style myStyle2 = (Style)Application.Current.Resources["forchatborder"];
-                    
-                    textBlock.Style = myStyle;
-                    Border border = new Border();
-                    border.Style = myStyle2;
-                    border.Child = textBlock;
-                    mylist1.Children.Add(border);
-                    scroll1.ScrollToEnd(); //прокручивает в самый низ при отправке сообщений
+                    soob.Add(soobItem);
+                    mylist1.ScrollIntoView(soobItem);
                 }
             }
 
@@ -54,20 +81,13 @@ namespace mytelegramm
         {
             if (soob1.Text != "")
             {
-                    TextBlock textBlock = new TextBlock();
-                    textBlock.Text = soob1.Text;
-                    soob1.Text = "";
-                    // Получение ресурса стиля из App.xaml
-                    Style myStyle = (Style)Application.Current.Resources["forchat"];
-                    // Получение ресурса стиля из App.xaml
-                    Style myStyle2 = (Style)Application.Current.Resources["forchatborder"];
-
-                    textBlock.Style = myStyle;
-                    Border border = new Border();
-                    border.Style = myStyle2;
-                    border.Child = textBlock;
-                    mylist1.Children.Add(border);
-                    scroll1.ScrollToEnd(); //прокручивает в самый низ при отправке сообщений
+                SoobItem soobItem = new SoobItem();
+                soobItem.LastMessage = soob1.Text;
+                DateTime localTime = DateTime.Now;
+                soobItem.Datesend = localTime.ToString("HH:mm");
+                soob1.Text = "";
+                soob.Add(soobItem);
+                mylist1.ScrollIntoView(soobItem);
             }
         }
     }

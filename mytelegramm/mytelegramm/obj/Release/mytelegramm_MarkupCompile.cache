@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Пользователь\source\repos\mytelegramm\mytelegramm\obj\Debug\
+C:\Users\Пользователь\source\repos\mytelegramm\mytelegramm\obj\Release\
 mytelegramm
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Пользователь\source\repos\mytelegramm\mytelegramm\App.xaml
 4-518046913
 
-9-498959372
+81874229803
 13-38814620
 chatselected.xaml;MainWindow.xaml;mychat.xaml;myregister.xaml;
 

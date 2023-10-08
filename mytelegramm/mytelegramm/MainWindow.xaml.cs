@@ -17,52 +17,7 @@ using System.Runtime.CompilerServices;
 
 namespace mytelegramm
 {
-    //public class ChatItem : INotifyPropertyChanged
-    //{
-    //    private BitmapImage _image;
-    //    private string _chatName;
-    //    private string _lastMessage;
-
-    //    public BitmapImage Image
-    //    {
-    //        get { return _image; }
-    //        set
-    //        {
-    //            _image = value;
-    //            OnPropertyChanged();
-    //        }
-    //    }
-
-    //    public string ChatName
-    //    {
-    //        get { return _chatName; }
-    //        set
-    //        {
-    //            _chatName = value;
-    //            OnPropertyChanged();
-    //        }
-    //    }
-
-    //    public string LastMessage
-    //    {
-    //        get { return _lastMessage; }
-    //        set
-    //        {
-    //            _lastMessage = value;
-    //            OnPropertyChanged();
-    //        }
-    //    }
-
-    //    public event PropertyChangedEventHandler PropertyChanged;
-
-    //    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    //    {
-    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    //    }
-    //}
-
-    //тут мы наследуем класс дабы изменения были динамически
-    //не забываем при инициализации объекта класса DataContext = person;
+   
     public class Person : INotifyPropertyChanged 
     {
         private string _name;
@@ -113,13 +68,12 @@ namespace mytelegramm
 
     public partial class MainWindow : Window
     {
+        public ChatItem SelectedChat { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             NavigationFrame.Content = new myregister();
         }
-
-  
 
     }
 }

@@ -6,25 +6,6 @@
     <Application.Resources>
         <Style TargetType="ListView" x:Key="listview">
             <Setter Property="Background" Value="#1c212e"/>
-           
-        </Style>
-
-
-        <Style TargetType="Border" x:Key="forchatborder">
-            <Setter Property="Background" Value="#4b5a7d"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Padding" Value="15"/>
-            <Setter Property="Margin" Value="0 8 20 8"/>
-            <Setter Property="CornerRadius" Value="30"/>
-        </Style>
-
-        <Style TargetType="TextBlock" x:Key="forchat">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Background" Value="#4b5a7d"/>
-            <Setter Property="MaxWidth" Value="300"/>
-            <Setter Property="Width" Value="Auto"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="26"/>
         </Style>
 
         <Style TargetType="Button" x:Key="RoundButtonforchat">
@@ -51,9 +32,9 @@
                     <EventTrigger.Actions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <DoubleAnimation Storyboard.TargetProperty="Width" Duration="0:0:0.20" To="100" AutoReverse="True" />
-                                <DoubleAnimation Storyboard.TargetProperty="Height" Duration="0:0:0.20" To="48" AutoReverse="True" />
-                                <DoubleAnimation Storyboard.TargetProperty="FontSize" Duration="0:0:0.20" To="24" AutoReverse="True" />
+                                <DoubleAnimation Storyboard.TargetProperty="Width" Duration="0:0:0.20" To="100" AutoReverse="True"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" Duration="0:0:0.20" To="48" AutoReverse="True"/>
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" Duration="0:0:0.20" To="24" AutoReverse="True"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
